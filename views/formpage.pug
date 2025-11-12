@@ -1,0 +1,98 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block content
+
+|<!DOCTYPE html>
+|<html lang="en">
+|
+|<head>
+|	<meta charset="utf-8" />
+|	<title>Homework 5, CSC 305 Database Design, Fall 2025</title>
+|	<style>
+|		/* Indicate required elements */
+|		.flag { color: firebrick; }
+|
+|		/* The required flag starts out as a red asterisk. */
+|		.flag::before {
+|			content: "*";
+|			padding-left: 2px;
+|		}
+|
+|		/* Change the red * to a green check once the control has been filled in.  
+|   			The ~ is for selecting siblings without requiring that they be right 
+|   			next to each other. */
+|		:required:valid ~ .flag::before, .flag.valid::before {
+|			content: '✓';
+|			color: green;
+|		}
+|
+|		.graduation > input { margin-left: 2em;	}
+|
+|		ul {
+|			list-style-type: none;
+|            margin-top: 0;
+|		}
+|
+|        div { margin-bottom: 0.5em; }
+|
+|		.explanations { padding: 0; }
+|	</style>
+|</head>
+|
+|<body>
+|	<h1>Homework 5</h1>
+|
+|	<form action="/" method="post" id="postform">
+|		<fieldset>
+|			<div class="inigo">&ldquo;Hello! My name is
+|				<input name="nameblank" id="nameblank" required />.<span class="flag"></span> You killed my
+|				father. Prepare to die.&rdquo;<sup><a id="ref1" href="#note1">1</a></sup>
+|				(Or not! &#x1F607;)</div>
+|			<div class="email"><label for="email">An email address (maybe mine, maybe not)
+|					is:</label>
+|				<input name="email" id="email" type="email" required /><span class="flag"></span></div>
+|			<div class="graduation"><label>I expect to graduate in:</label>
+|				<input type="radio" name="grad-year" value="2023" id="grad-2023" required />
+|				<label for="grad-2023">2023</label>
+|				<input type="radio" name="grad-year" value="2024" id="grad-2024" required />
+|				<label for="grad-2024">2024</label></span>
+|				<input type="radio" name="grad-year" value="2025" id="grad-2025" required />
+|				<label for="grad-2025">2025</label>
+|				<input type="radio" name="grad-year" value="2026" id="grad-2026" required />
+|				<label for="grad-2026">2026</label>
+|				<span class="flag"></span>
+|			</div>
+|			<div class="colors"><label>I like foods of the following colors (check all
+|					that apply):</label><span class="flag"></span>
+|				<ul>
+|					<li style="background-color: plum"><input type="checkbox" name="Plum" value="Plum"
+|							id="Plum" />
+|						<label for="Plum">Plum</label></li>
+|					<li style="background-color: tomato"><input type="checkbox" name="Tomato" value="Tomato"
+|							id="Tomato" />
+|						<label for="Tomato">Tomato</label></li>
+|					<li style="background-color: wheat"><input type="checkbox" name="Wheat" value="Wheat"
+|							id="Wheat" />
+|						<label for="Wheat">Wheat</label></li>
+|					<li style="background-color: chocolate"><input type="checkbox" name="Chocolate" value="Chocolate"
+|							id="Chocolate" />
+|						<label for="Chocolate">Chocolate</label></li>
+|				</ul>
+|			</div>
+|			<input type="reset" value="Reset" /><input type="submit" value="Submit" />
+|		</fieldset>
+|	</form>
+|
+|    <ul class="explanations">
+|		<li><span class="flag"></span> Required or invalid input (hover over control for explanation)</li>
+|		<li><span class="flag valid"></span> Valid input</li>
+|	</ul>
+|
+|    <p><sup><a href="#ref1" id="note1">1</a></sup> <span style="font-style: italic">The Princess Bride.</span> Dir. Rob
+|		Reiner. Screenplay by William Goldman. Twentieth Century Fox Film Corp., 1987.</p>
+|</body>
+|</html>

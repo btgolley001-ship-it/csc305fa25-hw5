@@ -6,7 +6,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('formpage', { title: 'Homework 5' });
+  res.render('formpage', { title: 'Homework 5, CSC 305 Database Design, Fall 2025' });
 });
 
 /* When a POST request is received for the document root ("/"), 
@@ -16,8 +16,21 @@ router.get('/', function(req, res, next) {
 
 /* POST home page. */
 router.post('/', function(req, res, next) {
+  console.log('Name: '+ req.body.nameblank);
+  console.log('Email: '+ req.body.email);
+  console.log('Graduation Year: '+ req.body.grad-year);
+  console.log('Likes Plum: '+ req.body.Plum);
+  console.log('Likes Tomato: '+ req.body.Tomato);
+  console.log('Likes Wheat: '+ req.body.Wheat);
+  console.log('Likes Chocolate: '+ req.body.Chocolate);
   console.log('req.body (POST): '+JSON.stringify(req.body));
-  showPage(req, res, next);
+  if (req.body.formpage) {
+    console.log('Form Page')
+    res.render('formpage', { title: '' });
+  }
+  else {
+    res.render('formpage', { title: 'Homework 5, CSC 305 Database Design, Fall 2025'});
+  }
 });
 
 module.exports = router;

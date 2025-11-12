@@ -3,48 +3,61 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    |	<style>
+    |		/* Indicate required elements */
+    |		.flag { color: firebrick; }
+    |
+    |		/* The required flag starts out as a red asterisk. */
+    |		.flag::before {
+    |			content: "*";
+    |			padding-left: 2px;
+    |		}
+    |
+    |		/* Change the red * to a green check once the control has been filled in.  
+    |   			The ~ is for selecting siblings without requiring that they be right 
+    |   			next to each other. */
+    |		:required:valid ~ .flag::before, .flag.valid::before {
+    |			content: '✓';
+    |			color: green;
+    |		}
+    |
+    |		.graduation > input { margin-left: 2em;	}
+    |
+    |		ul {
+    |			list-style-type: none;
+    |            margin-top: 0;
+    |		}
+    |
+    |        div { margin-bottom: 0.5em; }
+    |
+    |		.explanations { padding: 0; }
+    |	</style>
   body
     block content
+    h1= title
+
+    table
+        tr
+            th Name
+            th    |   
+            th Email
+            th    |   
+            th Graduation Year
+            th    |   
+            th Favorite Food Colors
+        tr
+            th {nameblank.value}
+            th    |   
+            th {email.value}
+            th    |   
+            th {grad-year.value}
+            th    |   
+            th dev note: well. we're trying here. 
 
 |<!DOCTYPE html>
 |<html lang="en">
 |
-|<head>
-|	<meta charset="utf-8" />
-|	<title>Homework 5, CSC 305 Database Design, Fall 2025</title>
-|	<style>
-|		/* Indicate required elements */
-|		.flag { color: firebrick; }
-|
-|		/* The required flag starts out as a red asterisk. */
-|		.flag::before {
-|			content: "*";
-|			padding-left: 2px;
-|		}
-|
-|		/* Change the red * to a green check once the control has been filled in.  
-|   			The ~ is for selecting siblings without requiring that they be right 
-|   			next to each other. */
-|		:required:valid ~ .flag::before, .flag.valid::before {
-|			content: '✓';
-|			color: green;
-|		}
-|
-|		.graduation > input { margin-left: 2em;	}
-|
-|		ul {
-|			list-style-type: none;
-|            margin-top: 0;
-|		}
-|
-|        div { margin-bottom: 0.5em; }
-|
-|		.explanations { padding: 0; }
-|	</style>
-|</head>
-|
 |<body>
-|	<h1>Homework 5</h1>
 |
 |	<form action="/" method="post" id="postform">
 |		<fieldset>

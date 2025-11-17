@@ -70,10 +70,10 @@ function listNames(req, res, next) {
   listEmails(req, res, next);
 }
 
-/* function listEmails
+/*
  * Set req.app.locals.new_email to req.body.email
  * Update req.app.locals.list_emails with new_email
- * Call listGradYr next.
+ * Call saveGradYr next.
  */
 function listEmails(req, res, next) {
   console.log('\nPOST is running listEmails() ... req.app.locals.list_emails: '+(req.app.locals.list_emails));
@@ -99,19 +99,66 @@ function listEmails(req, res, next) {
     req.app.locals.list_emails = undefined;
   }
   console.log('POST has run listEmails() ... list_emails: '+(req.app.locals.list_emails));
-  renderPage(req, res, next); // calling renderPage early to test if this works like i want it to
+  saveGradYr(req, res, next);
 }
 
-/* function listGradYr
- * Set req.app.locals.new_gradyr to req.body.grad-year
- * Update req.app.locals.list_gradyr with new_gradyr
- * Call listColors next.
+/*
+ * Set req.app.locals.gradyr to req.body.gradyear
+ * Call saveColors next.
  */
 
+function saveGradYr(req, res, next) {
+  console.log('\nPOST is running saveGradYr() ... req.app.locals.gradyr: '+(req.app.locals.gradyr));
+  // have an input for gradyear
+  if (req.body.gradyear != undefined) {
+    req.app.locals.gradyr = req.body.gradyear;
+  }
+  // no input for gradyear
+  else {
+    req.app.locals.gradyr = undefined;
+  }
+  console.log('POST has run saveGradYr() ... req.app.locals.gradyr: '+(req.app.locals.gradyr));
+  saveColors(req, res, next);
+}
+
 /* function listColors
- * Set req.app.locals.listgradyr to ???
+ * Set req.app.locals.list_colors to ???
  * Call renderPage next.
  */
+
+function saveColors(req, res, next) {
+  req.app.locals.fav_colors = '';
+  console.log('\nPOST is running saveColors() ... req.app.locals.fav_colors: '+(req.app.locals.fav_colors));
+  if (req.body.Plum) {
+    req.app.locals.fav_colors += 'Plum';
+  }
+  if (req.body.Tomato) {
+    if (req.app.locals.fav_colors == '') {
+      req.app.locals.fav_colors += 'Tomato';
+    }
+    else {
+      req.app.locals.fav_colors += ', Tomato';
+    }
+  }
+  if (req.body.Wheat) {
+    if (req.app.locals.fav_colors == '') {
+      req.app.locals.fav_colors += 'Wheat';
+    }
+    else {
+      req.app.locals.fav_colors += ', Wheat';
+    }
+  }
+  if (req.body.Chocolate) {
+    if (req.app.locals.fav_colors == '') {
+      req.app.locals.fav_colors += 'Chocolate';
+    }
+    else {
+      req.app.locals.fav_colors += ', Chocolate';
+    }
+  }
+  console.log('POST has run saveColors() ... req.app.locals.fav_colors: '+(req.app.locals.fav_colors));
+  renderPage(req, res, next);
+}
 
 /*
  * Marshal all the data that has been stashed in req.app.locals, and call res.render on formpage.
@@ -122,7 +169,9 @@ function renderPage(req, res, next) {
                         new_name: req.app.locals.new_name,
                         list_names: req.app.locals.list_names,
                         new_email: req.app.locals.new_email,
-                        list_emails: req.app.locals.list_emails
+                        list_emails: req.app.locals.list_emails,
+                        new_gradyr: req.app.locals.gradyr,
+                        fav_colors: req.app.locals.fav_colors
   });
 }
 

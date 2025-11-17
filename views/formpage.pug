@@ -1,7 +1,6 @@
 doctype html
 html
   head
-    title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
     |	<style>
     |		/* Indicate required elements */
@@ -34,25 +33,15 @@ html
     |	</style>
   body
     block content
-    h1= title
-
-    table
-        tr
-            th Name
-            th    |   
-            th Email
-            th    |   
-            th Graduation Year
-            th    |   
-            th Favorite Food Colors
-        tr
-            th {nameblank.value}
-            th    |   
-            th {email.value}
-            th    |   
-            th {grad-year.value}
-            th    |   
-            th dev note: well. we're trying here. 
+    if title == 'Form Page First View'
+      h1= 'Homework 5'
+    if title == 'Form Page'
+      h1= ''
+    if formdata.nameblank != undefined
+      p Figuring out how to use formdata! We recognized ourself!
+      p Welcome to the second iteration of this page!
+    else 
+      p We're not recognizing any past formdata...
 
 |<!DOCTYPE html>
 |<html lang="en">

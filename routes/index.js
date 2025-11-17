@@ -48,7 +48,7 @@ function listNames(req, res, next) {
   // have an input for nameblank
   if (req.body.nameblank != undefined) {
     req.app.locals.new_name = req.body.nameblank;
-
+    /*
     // Been through POST before, just add newname onto list_names
     if (req.app.locals.list_names) {
       console.log('   Trying to add to req.app.locals.list_names with: '+(req.app.locals.new_name));
@@ -61,11 +61,14 @@ function listNames(req, res, next) {
       req.app.locals.list_names = req.app.locals.new_name;
     }
     console.log('   req.app.locals.list_names (POST): '+(req.app.locals.list_names));
+    */
   }
+  /*
   // no input for nameblank
   else {
     req.app.locals.list_names = undefined;
   }
+  */
   console.log('POST has run listNames() ... list_names: '+(req.app.locals.list_names));
   listEmails(req, res, next);
 }
@@ -81,6 +84,7 @@ function listEmails(req, res, next) {
   if (req.body.email != undefined) {
     req.app.locals.new_email = req.body.email;
 
+    /* 
     // Been through POST before, just add new_email onto list_names
     if (req.app.locals.list_emails) {
       console.log('   Trying to add to req.app.locals.list_emails with: '+(req.app.locals.new_email));
@@ -93,11 +97,14 @@ function listEmails(req, res, next) {
       req.app.locals.list_emails = req.app.locals.new_email;
     }
     console.log('   req.app.locals.list_emails (POST): '+(req.app.locals.list_emails));
+    */
   }
+  /*
   // no input for email
   else {
     req.app.locals.list_emails = undefined;
   }
+  */
   console.log('POST has run listEmails() ... list_emails: '+(req.app.locals.list_emails));
   saveGradYr(req, res, next);
 }
@@ -167,9 +174,9 @@ function renderPage(req, res, next) {
   res.render('formpage', { title: req.app.locals.title,
                         formdata: req.body,
                         new_name: req.app.locals.new_name,
-                        list_names: req.app.locals.list_names,
+                        // list_names: req.app.locals.list_names,
                         new_email: req.app.locals.new_email,
-                        list_emails: req.app.locals.list_emails,
+                        // list_emails: req.app.locals.list_emails,
                         new_gradyr: req.app.locals.gradyr,
                         fav_colors: req.app.locals.fav_colors
   });

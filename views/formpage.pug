@@ -31,17 +31,28 @@ html
     |
     |		.explanations { padding: 0; }
     |	</style>
+
   body
+
     block content
     if title == 'Form Page First View'
       h1= 'Homework 5'
     if title == 'Form Page'
       h1= ''
-    if formdata.nameblank != undefined
-      p Figuring out how to use formdata! We recognized ourself!
-      p Welcome to the second iteration of this page!
-    else 
-      p We're not recognizing any past formdata...
+      
+      table 
+      
+        tr 
+        th Name
+        th Email
+        th Graduation Year
+        th Favorite Food Colors
+
+        tr
+          td #{new_name}
+          td #{new_email}
+          td #{new_gradyr}
+          td #{fav_colors}
 
 |<!DOCTYPE html>
 |<html lang="en">
